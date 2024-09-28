@@ -1,15 +1,20 @@
 @import ./vars
 
+.tile-list
+	display: flex
+	flex-direction: column
+	gap: $padding
+
 .tile
 	background-color: #222222
 	border-radius: $border-radius
 	border: 1px solid white
 	padding: $padding
+	display: flex
+	gap: $padding
 
 	&:hover
 		cursor: pointer
 
-.tile-list
-	display: flex
+.tile-content
 	flex-direction: column
-	gap: $padding

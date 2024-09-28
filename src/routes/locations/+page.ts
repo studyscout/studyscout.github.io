@@ -8,7 +8,5 @@ export const load: PageLoad = async ({ url }) => {
     return { posts: item}; */
 	const a = url.searchParams;
 	console.log(a.get('id'));
-
-	const locaitons = places;
 	return { places: places };
 };

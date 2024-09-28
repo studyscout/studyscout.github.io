@@ -18,6 +18,5 @@
 <div class="tile-list">
 	{#each places as place, index}
 		<LocationTile location={place} />
-		<!-- <a href="/locations?id={index}"> go to {place.Name} <br /></a> -->
 	{/each}
 </div>
