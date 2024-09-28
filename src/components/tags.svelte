@@ -5,7 +5,7 @@
 <p class="filled_tag">Wifi2</p>
 
 <style lang="sass">
-    @import ../style/temp
-    @import ../style/tags
+    @import ../styles/temp
+    @import ../styles/tags
 
 </style>
