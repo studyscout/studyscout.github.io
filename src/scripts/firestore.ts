@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore/lite';
-import type { Location } from '../scripts/storage';
+import type { Location } from '../interfaces/interfaces';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKiVOYYiN9JCEUQCGwFOhRd-lVk9wGn8M',
@@ -15,20 +15,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const _db = getFirestore(app);
 
-export async function getLocations() {
+export async function getLocations(): Promise<Location[]> {
 	const locCol = collection(_db, 'locations');
 	const locSnap = await getDocs(locCol);
 	const locList = locSnap.docs.map((doc) => doc.data());
-	return locList;
+	return locList as Location[];
 }
 
 // untested
-export async function getLocation(id : string) {
+export async function getLocation(id: string) {
 	const locRef = doc(_db, 'locations', id);
 	const locSnap = await getDoc(locRef);
 	return locSnap.data();
 }
 
-export async function createLocation(docData : Location) {
-	await setDoc(doc(_db, 'locations', docData.Latitude.toString() + docData.Longitude.toString()), docData);
+export async function createLocation(docData: Location) {
+	await setDoc(
+		doc(_db, 'locations', docData.location.lat.toString() + docData.location.long.toString()),
+		docData
+	);
 }

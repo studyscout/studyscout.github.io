@@ -1,70 +1,70 @@
-export interface Location {
-	Name: string;
-	Latitude: number;
-	Longitude: number;
-	Tags: {
-		city: boolean;
-		tech_hub: boolean;
-		tourist_spot: boolean;
-	};
-	Stars: number;
-}
+import type { Location } from '../interfaces/interfaces';
 
 const places: Location[] = [
 	{
-		Name: 'Mountain View',
-		Latitude: 37.3861,
-		Longitude: -122.0839,
-		Tags: {
+		name: 'Mountain View',
+		location: {
+			lat: 37.3861,
+			long: -122.0839
+		},
+		tags: {
 			city: true,
 			tech_hub: true,
 			tourist_spot: false
 		},
-		Stars: 4.5
+		stars: 4.5
 	},
 	{
-		Name: 'Tokyo Tower',
-		Latitude: 35.6586,
-		Longitude: 139.7454,
-		Tags: {
+		name: 'Tokyo Tower',
+		location: {
+			lat: 35.6586,
+			long: 139.7454
+		},
+		tags: {
 			city: false,
 			tech_hub: false,
 			tourist_spot: true
 		},
-		Stars: 4.8
+		stars: 4.8
 	},
 	{
-		Name: 'Grand Canyon',
-		Latitude: 36.1069,
-		Longitude: -112.1129,
-		Tags: {
+		name: 'Grand Canyon',
+		location: {
+			lat: 36.1069,
+			long: -112.1129
+		},
+		tags: {
 			city: false,
 			tech_hub: false,
 			tourist_spot: true
 		},
-		Stars: 4.9
+		stars: 4.9
 	},
 	{
-		Name: 'San Francisco',
-		Latitude: 37.7749,
-		Longitude: -122.4194,
-		Tags: {
+		name: 'San Francisco',
+		location: {
+			lat: 37.7749,
+			long: -122.4194
+		},
+		tags: {
 			city: true,
 			tech_hub: true,
 			tourist_spot: true
 		},
-		Stars: 4.7
+		stars: 4.7
 	},
 	{
-		Name: 'Paris',
-		Latitude: 48.8566,
-		Longitude: 2.3522,
-		Tags: {
+		name: 'Paris',
+		location: {
+			lat: 48.8566,
+			long: 2.3522
+		},
+		tags: {
 			city: true,
 			tech_hub: true,
 			tourist_spot: true
 		},
-		Stars: 5.0
+		stars: 5.0
 	}
 ];
 
