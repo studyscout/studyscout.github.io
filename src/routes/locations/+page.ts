@@ -6,9 +6,15 @@ export const load: PageLoad = async ({ url }) => {
     const item = await res.json();
 
     return { posts: item}; */
-	const a = url.searchParams;
-	console.log(a.get('id'));
+	const a = url.searchParams;	
+	console.log(a.get("id"));
 
-	const locaitons = places;
-	return { places: places };
+	let index: string | null | number = a.get("id");
+
+	if(index != null){
+		index = parseInt(index);
+		return places[index];
+	}
+
+	return undefined;
 };
