@@ -1,23 +1,20 @@
 <script lang="ts">
-	export let value: number;
+	import { onMount } from 'svelte';
+	import { getLocations } from './firestore';
 
-	const i: any = 0;
+	let data: Promise<any[]>;
 
-	function func(param: number) {
-		return param + 1;
-	}
-
-	for (let j = 0; j < 10; j++) {}
-
-	const arr = [1, 2, 3];
-
-	for (const a of arr) {
-		// a
-	}
-
-	const obj = { apple: 'bees', loop: 'e' };
+	onMount(() => {
+		data = getLocations();
+	});
 </script>
 
-{#each Object.entries(obj) as [a, b]}
-	<p>{a} = {b}</p>
-{/each}
+{#if data}
+	{#await data}
+		<p>Loading...</p>
+	{:then cities}
+		{#each cities as city}
+			<p>{JSON.stringify(city)}</p>
+		{/each}
+	{/await}
+{/if}
