@@ -1,0 +1,1 @@
+.tile-list{display:flex;flex-direction:column;gap:12px}.tile{background-color:#222;border-radius:12px;border:1px solid white;padding:12px;display:flex;gap:12px}.tile:hover{cursor:pointer}.tile-content{flex-direction:column}html{background-color:#1a1a1a;color:#fff;font-family:Arial,Helvetica,sans-serif}h1,h2,h3,h4,h5,p{margin:0}img{border-radius:12px}
