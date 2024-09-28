@@ -13,5 +13,5 @@
 </script>
 
 {#each places as place, index}
-	<a href="/location_data?id={index}"> go to {place.Name} <br /></a>
+	<a href="/locations?id={index}"> go to {place.Name} <br /></a>
 {/each}
