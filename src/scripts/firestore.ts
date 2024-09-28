@@ -22,16 +22,20 @@ export async function getLocations(): Promise<Location[]> {
 	return locList as Location[];
 }
 
-// untested
-export async function getLocation(id: string) {
+export async function getLocation(id: string): Promise<Location> {
 	const locRef = doc(_db, 'locations', id);
 	const locSnap = await getDoc(locRef);
-	return locSnap.data();
+	return locSnap.data() as Location;
 }
 
-export async function createLocation(docData: Location) {
-	await setDoc(
-		doc(_db, 'locations', docData.location.lat.toString() + docData.location.long.toString()),
-		docData
-	);
+export async function createLocation(docData: Location): Promise<void> {
+	const id = getId(docData);
+	let data: Location = docData;
+	data.id = id;
+
+	await setDoc(doc(_db, 'locations', id), docData);
+}
+
+function getId(docData: Location) {
+	return docData.location.lat.toString() + docData.location.long.toString();
 }

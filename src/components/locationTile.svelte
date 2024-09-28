@@ -6,7 +6,7 @@
 	export let location: Location;
 
 	function navigate() {
-		goto(`/locations?id=${location}`);
+		goto(`/locations?id=${location.id}`);
 	}
 </script>
 

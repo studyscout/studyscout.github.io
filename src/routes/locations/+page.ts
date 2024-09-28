@@ -1,21 +1,14 @@
-import places from '../../scripts/storage';
+import { getLocation } from '../../scripts/firestore';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ url }) => {
-	/* const res = await fetch('https://jsonplaceholder.org/posts')
-    const item = await res.json();
-
-    return { posts: item}; */
-
 	const a = url.searchParams;
-	console.log(a.get('id'));
+	let id = a.get('id');
 
-	let index = a.get('id');
-
-	if (index != null) {
-		const i = parseInt(index);
-		return places[i];
+	if (id == null) {
+		throw new Error('ID not defined');
 	}
 
-	return undefined;
+	const location = getLocation(id);
+	return location;
 };
