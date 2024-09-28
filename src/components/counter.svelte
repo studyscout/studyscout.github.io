@@ -1,6 +1,4 @@
 <script lang="ts">
-	export let value: number;
-
 	const i: any = 0;
 
 	function func(param: number) {
