@@ -11,11 +11,11 @@
 
 	const arr = [1, 2, 3];
 
-	for (const a in arr) {
+	for (const a of arr) {
 		// a
 	}
 
-	const obj = { apple: 'bees', loop: 'deloop' };
+	const obj = { apple: 'bees', loop: 'e' };
 </script>
 
 {#each Object.entries(obj) as [a, b]}
