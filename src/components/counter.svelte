@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getCities } from './firestore';
+	import { getLocations } from './firestore';
 
 	let data: Promise<any[]>;
 
 	onMount(() => {
-		data = getCities();
+		data = getLocations();
 	});
 </script>
 
