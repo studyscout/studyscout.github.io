@@ -22,11 +22,13 @@ export async function getLocations() {
 	return locList;
 }
 
-async function getLocation(id : string) {
+// untested
+export async function getLocation(id : string) {
 	const locRef = doc(_db, 'locations', id);
 	const locSnap = await getDoc(locRef);
+	return locSnap.data();
 }
 
-export async function setLocation(docData : Location) {
+export async function createLocation(docData : Location) {
 	await setDoc(doc(_db, 'locations', docData.Latitude.toString() + docData.Longitude.toString()), docData);
 }

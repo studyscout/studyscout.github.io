@@ -6,7 +6,16 @@ export const load: PageLoad = async ({ url }) => {
     const item = await res.json();
 
     return { posts: item}; */
+
 	const a = url.searchParams;
 	console.log(a.get('id'));
-	return { places: places };
+
+	let index = a.get('id');
+
+	if (index != null) {
+		const i = parseInt(index);
+		return places[i];
+	}
+
+	return undefined;
 };
