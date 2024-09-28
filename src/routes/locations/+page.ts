@@ -1,7 +1,7 @@
 import places from '../../scripts/storage';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ url}) => {
+export const load: PageLoad = async ({ url }) => {
 	/* const res = await fetch('https://jsonplaceholder.org/posts')
     const item = await res.json();
 

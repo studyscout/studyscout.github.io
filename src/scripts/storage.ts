@@ -1,4 +1,4 @@
-export interface exampleData {
+export interface Location {
 	Name: string;
 	Latitude: number;
 	Longitude: number;
@@ -10,7 +10,7 @@ export interface exampleData {
 	Stars: number;
 }
 
-const places: exampleData[] = [
+const places: Location[] = [
 	{
 		Name: 'Mountain View',
 		Latitude: 37.3861,

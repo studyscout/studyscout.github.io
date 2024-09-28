@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, Firestore } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore/lite';
+import type { Location } from '../scripts/storage';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKiVOYYiN9JCEUQCGwFOhRd-lVk9wGn8M',
@@ -21,3 +22,11 @@ export async function getLocations() {
 	return locList;
 }
 
+async function getLocation(id : string) {
+	const locRef = doc(_db, 'locations', id);
+	const locSnap = await getDoc(locRef);
+}
+
+export async function setLocation(docData : Location) {
+	await setDoc(doc(_db, 'locations', docData.Latitude.toString() + docData.Longitude.toString()), docData);
+}
