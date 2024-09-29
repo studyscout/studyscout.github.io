@@ -8,13 +8,16 @@
 	import '../styles/home.sass';
 	import { formatTagList } from '../scripts/taglist';
 
+	export let selecting = true;
+	let selectingMarker: { map: null };
+
 	useLocation(initMap);
 
 	onMount(() => {
 		loadMap();
 	});
 
-	let map;
+	let map: { addListener: (arg0: string, arg1: (e: any) => void) => void };
 	async function initMap(coordinates: Coordinates): Promise<void> {
 		const center = coordinatesToMapPosition(coordinates);
 
@@ -29,6 +32,30 @@
 			center,
 			mapId: 'map_id'
 		});
+
+		if (selecting) {
+			map.addListener('click', (e: any) => {
+				placeMarker(map, e.latLng);
+			});
+		}
+
+		function placeMarker(map: any, location: any) {
+			if (selectingMarker) {
+				selectingMarker.map = null;
+			}
+
+			selectingMarker = new google.maps.marker.AdvancedMarkerElement({
+				position: location,
+				map
+			});
+
+			map.setCenter(location);
+			map.setZoom(18);
+
+			infoWindow.close();
+			infoWindow.setContent(createContent(location));
+			infoWindow.open(selectingMarker.map, selectingMarker);
+		}
 
 		const { locations } = await $locationsRead;
 
@@ -58,8 +85,22 @@
 		</div>
 		`;
 	}
+
+	function createContent(location: any) {
+		console.log(JSON.stringify(location));
+		return `
+			<h2 style="color:black">Is this location ok?</h2>
+			<a href="/create?lat=${location.lat()}&lng=${location.lng()}">Create a new study location</a>
+		`;
+	}
 </script>
 
 <div style="flex-grow: 1">
 	<div id="map"></div>
 </div>
+
+<style>
+	div {
+		color: black;
+	}
+</style>
