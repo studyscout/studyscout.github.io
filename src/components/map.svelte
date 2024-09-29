@@ -5,6 +5,7 @@
 	import { coordinatesToMapPosition, locationToMapPosition } from '../scripts/helper';
 	import { onMount } from 'svelte';
 	import loadMap from '../hooks/map';
+	import '../styles/home.sass';
 
 	useLocation(initMap);
 
@@ -53,11 +54,3 @@
 <div style="flex-grow: 1">
 	<div id="map"></div>
 </div>
-
-<style>
-	#map {
-		height: 100%;
-		width: 100%;
-		background-color: white;
-	}
-</style>

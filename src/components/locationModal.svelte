@@ -62,6 +62,8 @@
 	>
 		<div class="handle"></div>
 	</div>
-	<ModalHeader />
-	<LocationList />
+	<div class="location-modal-content">
+		<ModalHeader />
+		<LocationList />
+	</div>
 </div>
