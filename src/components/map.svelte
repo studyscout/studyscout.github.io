@@ -6,11 +6,11 @@
 	import { onMount } from 'svelte';
 	import loadMap from '../hooks/map';
 
-	// useLocation(initMap);
+	useLocation(initMap);
 
-	// onMount(() => {
-	// 	loadMap();
-	// });
+	onMount(() => {
+		loadMap();
+	});
 
 	let map;
 	async function initMap(coordinates: Coordinates): Promise<void> {
