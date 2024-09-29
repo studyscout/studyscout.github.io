@@ -55,6 +55,8 @@
 			infoWindow.close();
 			infoWindow.setContent(createContent(location));
 			infoWindow.open(selectingMarker.map, selectingMarker);
+
+			infoWindow.addListener('closeclick', () => {selectingMarker.map = null});
 		}
 
 		const { locations } = await $locationsRead;

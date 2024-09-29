@@ -17,3 +17,19 @@ export async function getImages(id: string): Promise<string[]> {
 
 	return result;
 }
+
+export async function getFirstImage(id: string) {
+	const reference = ref(storage, id);
+	const l = await list(reference);
+	console.log(l);
+	let result: string[] = [];
+
+	for (const item of l.items) {
+		const r = ref(storage, item.fullPath);
+		const url = await getDownloadURL(r);
+		result.push(url);
+		break; 			// yes
+	}
+
+	return result;
+}
