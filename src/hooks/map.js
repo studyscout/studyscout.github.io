@@ -33,5 +33,5 @@ export default function loadMap() {
 		d[l]
 			? console.warn(p + ' only loads once. Ignoring:', g)
 			: (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
-	})({ key: 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg', v: 'weekly' });
+	})({ key: 'AIzaSyDBBIAIrl0DViTk_pM6Ink6q3GTEYlTbhw', v: 'weekly' });
 }

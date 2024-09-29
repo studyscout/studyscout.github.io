@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import LocationList from './locationList.svelte';
 	import ModalHeader from './modalHeader.svelte';
-	import type { AppTouchEvent } from '../scripts/helper';
 
 	let offset: number = 0;
 	let top: number;
@@ -11,7 +10,7 @@
 	let startY: number = 0;
 	let windowHeight: number = 0;
 
-	function dragStart(event: MouseEvent | AppTouchEvent) {
+	function dragStart(event: MouseEvent | TouchEvent) {
 		dragging = true;
 
 		const clientY = event instanceof TouchEvent ? event.touches[0].clientY : event.clientY;
@@ -19,11 +18,10 @@
 		startY = clientY - rect.top;
 	}
 
-	function dragMove(event: MouseEvent | AppTouchEvent) {
+	function dragMove(event: MouseEvent | TouchEvent) {
 		if (dragging) {
 			const clientY = event instanceof TouchEvent ? event.touches[0].clientY : event.clientY;
 			offset = Math.min(clientY - top - startY, 0);
-			console.log(bounds);
 		}
 	}
 
@@ -62,6 +60,8 @@
 	>
 		<div class="handle"></div>
 	</div>
-	<ModalHeader />
-	<LocationList />
+	<div class="location-modal-content">
+		<ModalHeader />
+		<LocationList />
+	</div>
 </div>

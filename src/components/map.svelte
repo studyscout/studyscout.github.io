@@ -1,10 +1,15 @@
 <script lang="ts">
 	import useLocation from '../hooks/useLocation';
-	import type { Coordinates } from '../interfaces/interfaces';
+	import type { Coordinates, Location } from '../interfaces/interfaces';
 	import { locationsRead } from '../hooks/context';
 	import { coordinatesToMapPosition, locationToMapPosition } from '../scripts/helper';
 	import { onMount } from 'svelte';
 	import loadMap from '../hooks/map';
+	import '../styles/home.sass';
+	import { formatTagList } from '../scripts/taglist';
+
+	export let selecting = true;
+	let selectingMarker: { map: null };
 
 	useLocation(initMap);
 
@@ -12,7 +17,7 @@
 		loadMap();
 	});
 
-	let map;
+	let map: { addListener: (arg0: string, arg1: (e: any) => void) => void };
 	async function initMap(coordinates: Coordinates): Promise<void> {
 		const center = coordinatesToMapPosition(coordinates);
 
@@ -21,12 +26,36 @@
 			'marker'
 		)) as google.maps.MarkerLibrary;
 
-		const infoWindow = new google.maps.InfoWindow();
+		const infoWindow = new google.maps.InfoWindow({ maxWidth: '300px' });
 		map = new Map(document.getElementById('map') as HTMLElement, {
 			zoom: 15,
 			center,
 			mapId: 'map_id'
 		});
+
+		if (selecting) {
+			map.addListener('click', (e: any) => {
+				placeMarker(map, e.latLng);
+			});
+		}
+
+		function placeMarker(map: any, location: any) {
+			if (selectingMarker) {
+				selectingMarker.map = null;
+			}
+
+			selectingMarker = new google.maps.marker.AdvancedMarkerElement({
+				position: location,
+				map
+			});
+
+			map.setCenter(location);
+			map.setZoom(18);
+
+			infoWindow.close();
+			infoWindow.setContent(createContent(location));
+			infoWindow.open(selectingMarker.map, selectingMarker);
+		}
 
 		const { locations } = await $locationsRead;
 
@@ -41,12 +70,28 @@
 
 			marker.addListener('click', () => {
 				infoWindow.close();
-				infoWindow.setContent(
-					'<h1>' + marker.getTitle() + '</h1>' + '<p>' + location.stars + '/5</p><ul class="tags">'
-				);
-				infoWindow.open(marker.getMap(), marker);
+				infoWindow.setContent(getContent(location));
+				infoWindow.open(marker.map, marker);
 			});
 		}
+	}
+
+	function getContent(location: Location) {
+		return `
+		<div style="color: black">
+			<a style="color: inherit; font-size: 30px" href="/locations?id=${location.id}">${location.name}</a>
+			<p style="color: inherit">${formatTagList(location.tags)}</p>
+			<p style="color: inherit">${location.stars}/5 starts</p>
+		</div>
+		`;
+	}
+
+	function createContent(location: any) {
+		console.log(JSON.stringify(location));
+		return `
+			<h2 style="color:black">Is this location ok?</h2>
+			<a href="/create?lat=${location.lat()}&lng=${location.lng()}">Create a new study location</a>
+		`;
 	}
 </script>
 
@@ -55,9 +100,7 @@
 </div>
 
 <style>
-	#map {
-		height: 100%;
-		width: 100%;
-		background-color: white;
+	div {
+		color: black;
 	}
 </style>

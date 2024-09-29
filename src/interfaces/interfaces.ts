@@ -9,3 +9,8 @@ export interface Location {
 }
 
 export type LocationPromise = Promise<{ locations: Location[] }>;
+
+export interface ListFilters {
+	search: string;
+	filters: string[];
+}
