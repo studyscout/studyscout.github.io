@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"copy": "xcopy build_files out /E /I /Y",
+		"copy": "xcopy build_files build /E /I /Y",
 		"deploy": "npm run copy && gh-pages -d build/",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

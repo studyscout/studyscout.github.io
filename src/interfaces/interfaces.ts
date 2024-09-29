@@ -7,3 +7,5 @@ export interface Location {
 	tags: Record<string, boolean>;
 	stars: number;
 }
+
+export type LocationPromise = Promise<{ locations: Location[] }>;
