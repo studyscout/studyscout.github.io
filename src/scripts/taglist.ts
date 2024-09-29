@@ -10,7 +10,7 @@ export const allTags: string[] = [
 	'Natural Lighting'
 ];
 
-export const accesbilities: string[] = ['Wheel Chair Access', 'Deaf Friendly', 'Blind Friendly'];
+export const accessabiliy: string[] = ['Wheel Chair Access', 'Deaf Friendly', 'Blind Friendly'];
 
 export function formatTagList(tagObj: Record<string, boolean>): string {
 	const tags: string[] = Object.keys(tagObj);

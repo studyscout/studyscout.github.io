@@ -90,7 +90,7 @@
 		console.log(JSON.stringify(location));
 		return `
 			<h2 style="color:black">Is this location ok?</h2>
-			<a href="/create?lat=${location.lat()}&lng=${location.lng()}">Create a new study location</a>
+			<a href="/locations/create?lat=${location.lat()}&lng=${location.lng()}">Create a new study location</a>
 		`;
 	}
 </script>

@@ -1,23 +1,24 @@
 <script lang="ts">
-    export let tagName: string;
-    import "../styles/tags.sass"
+	export let tagName: string;
+	import '../styles/location.sass';
 
-    import { editTagsStore } from "../hooks/context"
+	import { editTagsStore } from '../hooks/context';
 
-    function handleClick() {
-        console.log("Here")
-        const index = $editTagsStore.indexOf(tagName);
+	// doesn't work -- change asap
+	function handleClick() {
+		const index = $editTagsStore.indexOf(tagName);
+		console.log(index);
 
-        if(index > 0) {
-            $editTagsStore.splice(index, 1);
-        } else {
-            $editTagsStore.push(tagName);
-        }
+		if (index > 0) {
+			$editTagsStore.splice(index, 1);
+		} else {
+			$editTagsStore.push(tagName);
+		}
 
-        $editTagsStore = $editTagsStore
-    }
+		$editTagsStore = $editTagsStore;
+	}
 </script>
 
-<div class="{$editTagsStore.includes(tagName) ? "filled_tag" : "unfilled_tag"}" on:click={handleClick}>
-    {tagName}
-</div>
+<button class="tag {$editTagsStore.includes(tagName) ? 'selected' : ''}" on:click={handleClick}>
+	{tagName}
+</button>
