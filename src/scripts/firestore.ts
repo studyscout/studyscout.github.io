@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, doc, getDoc, setDoc } from 'firebase/firestore/lite';
 import type { Location } from '../interfaces/interfaces';
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKiVOYYiN9JCEUQCGwFOhRd-lVk9wGn8M',
@@ -14,6 +15,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const _db = getFirestore(app);
+
+export const authen = getAuth(app);
+export const prov = new GoogleAuthProvider();
 
 export async function getLocations(): Promise<Location[]> {
 	const locCol = collection(_db, 'locations');
