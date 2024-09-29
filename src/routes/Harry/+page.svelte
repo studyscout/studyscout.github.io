@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../../styles/tags.sass';
+	import '../../styles/locations.sass';
 	// import '../styles/home.sass';
 </script>
 
