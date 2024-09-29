@@ -59,6 +59,12 @@
 
 		tagsVisible = !tagsVisible;
 	}
+
+	// function returnGoogleMapQuery(lat: number, long: number){
+	// 	if(lat == undefined || long == undefined)
+	// 		return undefined;
+	// 	return "https://www.google.com/maps/search/?api=1&query=" + data.location.lat + "%2C" + data.location.long;
+	// }
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,19 +100,21 @@
 
 				<hr />
 			</h1>
-			<!-- <div>
-		<p>{place.location.lat}</p>
-		<p>{place.location.long}</p>
-	</div> -->
+
+				<!-- <div>
+				<p>{place.location.lat}</p>
+				<p>{place.location.long}</p>
+				</div> -->
+
 			<div>
 				<header id="locationPageFormat">
 					{getDist(0)} miles away
 				</header>
 			</div>
 
-			<div>
-				<a href="www.google.com" id="mapLink"> Here is where the map link would be </a>
-			</div>
+			<!-- <div>
+				<a href={returnGoogleMapQuery(place.location.lat, place.location.long)} id="mapLink"> Here is where the map link would be </a>
+			</div> -->
 
 			<div id="listHeader">
 				<div class="horizontal" id="bottom">
