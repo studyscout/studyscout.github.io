@@ -43,7 +43,10 @@
 
 			marker.addListener('click', () => {
 				infoWindow.close();
-				infoWindow.setContent(marker.getTitle());
+				infoWindow.setContent(
+					'<h1>' + marker.getTitle() + '</h1>' +
+					'<p>' + location.stars + '/5</p><ul class="tags">'
+				);
 				infoWindow.open(marker.getMap(), marker);
 			});
 		}
