@@ -17,14 +17,18 @@
 	import EditTags from '../../components/editTags.svelte';
 	import { editTagsStore } from '../../hooks/context';
 	import { createLocation } from '../../scripts/firestore';
+	import calcCrow from '../../scripts/distance';
+	import places from '../../scripts/storage';
 
-	useLocation(setLocation);
+	// useLocation(setLocation);
 
-	function setLocation(coordinates: Coordinates) {
-		coordinates = coordinates;
-	}
+	// function setLocation(coordinates: Coordinates) {
+	// 	console.log(coordinates);
+	// 	coordinates = coordinates;
+	// }
 
-	let coordinates: Coordinates | undefined;
+	// let coordinates: Coordinates | undefined;
+	// console.log(coordinates);
 
 	function getTag(tag: string) {
 		const temp = tag.split('_');
@@ -35,11 +39,6 @@
 		}
 
 		return finalString.slice(0, finalString.length - 1);
-	}
-
-	function getDist(currCoord: number) {
-		// eventually do something to get distance from given coord
-		return 0;
 	}
 
 	onMount(async () => {
@@ -55,12 +54,23 @@
 		tagsVisible = !tagsVisible;
 	}
 
-	function returnGoogleMapQuery(lat: number, long: number){
-		if(lat == undefined || long == undefined)
-			return undefined;
-		return "https://www.google.com/maps/search/?api=1&query=" + data.location.lat + "%2C" + data.location.long;
+	function returnGoogleMapQuery(lat: number, long: number) {
+		if (lat == undefined || long == undefined) return undefined;
+		return (
+			'https://www.google.com/maps/search/?api=1&query=' +
+			data.location.lat +
+			'%2C' +
+			data.location.long
+		);
 	}
 
+	function isFeatures(tags: Record<string, boolean>) {
+		return Object.keys(tags).filter((tag) => Object.keys(allTags).includes(tag));
+	}
+
+	function isAccessible(tags: Record<string, boolean>) {
+		return Object.keys(tags).filter((tag) => Object.keys(accessability).includes(tag));
+	}
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,79 +92,73 @@
 		</div>
 
 		<main id="locationPageFormat">
-			<h1>
-				<div class="col">
-					<div class="horizontal">
-						<section>
-							{place.name}
-						</section>
-						<section>
-							{place.stars} / 5 Stars
-						</section>
-					</div>
-				</div>
+			<h1>{place.name}</h1>
+			<h3>{place.stars} / 5 Stars</h3>
+			<hr />
 
-				<hr />
-			</h1>
-
-				<!-- <div>
+			<!-- <div>
 				<p>{place.location.lat}</p>
 				<p>{place.location.long}</p>
 				</div> -->
 
-			<div>
-				<header id="locationPageFormat">
-					{getDist(0)} miles away
-				</header>
-			</div>
+			<!-- {#if coordinates}
+				<p id="locationPageFormat">
+					{calcCrow(place.location.lat, place.location.long, coordinates[0], coordinates[1])} miles away
+				</p>
+			{:else}
+				<p>Distance not available</p>
+			{/if} -->
 
-			<div>
-				<a href={returnGoogleMapQuery(place.location.lat, place.location.long)} id="mapLink"> Google Maps </a>
+			<div style="display: flex; justify-content: space-between">
+				<a href={returnGoogleMapQuery(place.location.lat, place.location.long)} id="mapLink">
+					Google Maps
+				</a>
+
+				<button id="buttonEdit" on:click={changeVisibility}>
+					{tagsVisible ? 'Done' : 'Edit'}
+				</button>
 			</div>
 
 			<div id="listHeader">
-				<div class="horizontal" id="bottom">
-					<p>Tags</p>
-					<button id="buttonEdit" on:click={changeVisibility}>
-						{tagsVisible ? 'Done' : 'Edit'}
-					</button>
-				</div>
-
 				{#if tagsVisible}
 					<EditTags />
 				{:else}
 					<div id="box">
-						<div>
-							<h1>
-								Features
-								<hr />
-							</h1>
-						</div>
-						<div class="tagsList">
-							{#each Object.entries(place.tags) as [tag, beans]}
-								{#if Object.keys(allTags).includes(tag)}
+						{#if isFeatures(place.tags)}
+							<div>
+								<h1>Features</h1>
+								<br />
+							</div>
+							<div class="tagsList">
+								{#each isFeatures(place.tags) as tag}
 									<p class="tag">
 										{getTag(tag)}
 									</p>
-								{/if}
-							{/each}
-						</div>
+								{/each}
+							</div>
+						{/if}
 
-						<div>
-							<h1>
-								Accessibility
-								<hr />
-							</h1>
-						</div>
-						<div class="tagsList">
-							{#each Object.entries(place.tags) as [tag, beans]}
+						{#if isAccessible(place.tags).length > 0}
+							<div>
+								<h1>Accessibility</h1>
+								<br />
+							</div>
+							<div class="tagsList">
+								{#each isAccessible(place.tags) as tag}
+									<p class="tag">
+										{getTag(tag)}
+									</p>
+								{/each}
+
+								<!-- {#each Object.entries(place.tags) as [tag, beans]}
 								{#if Object.keys(accessability).includes(tag)}
 									<p class="tag">
 										{getTag(tag)}
 									</p>
 								{/if}
-							{/each}
-						</div>
+							{/each} -->
+							</div>
+						{/if}
 					</div>
 				{/if}
 			</div>
