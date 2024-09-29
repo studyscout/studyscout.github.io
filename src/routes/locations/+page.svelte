@@ -2,7 +2,7 @@
 	import type { Location } from '../../interfaces/interfaces';
 	import '../../styles/vars.sass';
 	import '../../styles/location.sass';
-	// import '../../styles/locationPage.sass';
+	import '../../styles/locationPage.sass';
 	import { allTags, accessability } from '../../scripts/taglist';
 	import { getImages } from '../../scripts/photo';
 	import '../../styles/global.sass';
@@ -141,7 +141,7 @@
 					</div>
 					<div class="tagsList">
 						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="unfilled_tag">
+							<p class="tag">
 								{getTag(tag)}
 							</p>
 						{/each}
@@ -155,7 +155,7 @@
 					</div>
 					<div class="tagsList">
 						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="unfilled_tag">
+							<p class="tag">
 								{getTag(tag)}
 							</p>
 						{/each}
