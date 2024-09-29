@@ -18,9 +18,11 @@
 		for (let str of temp) {
 			finalString += str.charAt(0).toUpperCase() + str.slice(1) + ' ';
 		}
-
 		return finalString.slice(0, finalString.length - 1);
 	}
+
+	let headThree = Object.entries(location.tags).slice(0, 3);
+
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -31,7 +33,7 @@
 		<h3>{location.name}</h3>
 		<div>
 			<div class="tags" style="margin-left: -12px; margin-right: -12px">
-				{#each Object.entries(location.tags) as [tag, beans]}
+				{#each headThree as [tag, beans]}
 					<ListTag tagName={getTag(tag)} />
 				{/each}
 			</div>
