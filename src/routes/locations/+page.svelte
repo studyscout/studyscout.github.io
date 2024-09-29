@@ -81,7 +81,6 @@
 	
 </style> -->
 
-<<<<<<< HEAD
 <div style="height: 100dvh; overflow: scroll">
 	{#await data}
 		<p>Loading...</p>
@@ -109,36 +108,11 @@
 							{place.stars} / 5 Stars
 						</section>
 					</div>
-=======
-{#await data}
-	<p>Loading...</p>
-{:then place}
-
-
-	<body id = "background">
-		<div class = "horizontal" id ="firstImages">
-			<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-			<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-			<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-		</div>
-
-		<main id = "locationPageFormat">
-		<h1>
-			<div class = "col">
-				<div class = "horizontal">
-					<section>
-						{place.name}
-					</section>
-					<section>
-						{place.stars} / 5 Stars
-					</section>
->>>>>>> 722de38952571a177a43bd052c445f9feaf5091d
 				</div>
 
 				<hr />
 			</h1>
 			<!-- <div>
-<<<<<<< HEAD
 		<p>{place.location.lat}</p>
 		<p>{place.location.long}</p>
 	</div> -->
@@ -191,67 +165,3 @@
 		</main>
 	{/await}
 </div>
-=======
-			<p>{place.location.lat}</p>
-			<p>{place.location.long}</p>
-		</div> -->
-		<div>
-			<header id = "locationPageFormat">
-				{getDist(0)} miles away
-			</header>
-		</div>
-
-		<div>
-			<a href= "www.google.com" id = "mapLink">
-				Here is where the map link would be
-			</a>
-		</div>
-
-
-		<div id = "listHeader">
-			<div class = "horizontal" id = "bottom">
-				<p>	
-					Tags
-				</p>
-				<button id = "buttonEdit">
-					Edit
-				</button>
-			</div>
-
-			<div id = "box">
-				<div>
-					<h1>
-						Features
-						<hr>
-					</h1>
-				</div>
-				<div class = "tagsList">
-
-					{#each Object.entries(allTags) as [tag, beans]}
-						<p class="tag">
-							{getTag(tag)}
-						</p>
-					{/each}
-				</div>
-
-				<div>
-					<h1>
-						Accessibility
-						<hr>
-					</h1>
-				</div>
-				<div class = "tagsList">
-
-					{#each Object.entries(accessability) as [tag, beans]}
-						<p class="tag">
-							{getTag(tag)}
-						</p>
-					{/each}
-				</div>
-			</div>
-
-		</div>
-	</main>
-</body>
-{/await}
->>>>>>> 722de38952571a177a43bd052c445f9feaf5091d
