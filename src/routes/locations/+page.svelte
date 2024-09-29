@@ -2,13 +2,16 @@
 	import type { Location } from '../../interfaces/interfaces';
 	import '../../styles/vars.sass';
 	import '../../styles/location.sass';
-	import '../../styles/locationPage.sass';
+	// import '../../styles/locationPage.sass';
 	import { allTags, accessability } from '../../scripts/taglist';
+	import { getImages } from '../../scripts/photo';
 
 	export let data: Location;
+	let images: string[] = [];
 
 	import useLocation from '../../hooks/useLocation';
 	import type { Coordinates } from '../../interfaces/interfaces';
+	import { onMount } from 'svelte';
 
 	useLocation(setLocation);
 
@@ -38,6 +41,10 @@
 		//eventually get a link to the coordinates through google
 		return 'www.google.com';
 	}
+
+	onMount(async () => {
+		images = await getImages(data.id);
+	});
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,79 +80,87 @@
 	
 </style> -->
 
-{#await data}
-	<p>Loading...</p>
-{:then place}
-	<div class="horizontal" id="firstImages">
-		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
-		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
-		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
-	</div>
+<div style="height: 100dvh; overflow: scroll">
+	{#await data}
+		<p>Loading...</p>
+	{:then place}
+		<div class="horizontal" id="firstImages">
+			{#if images}
+				{#await images}
+					<p>Loading photos...</p>
+				{:then imgs}
+					{#each imgs as image}
+						<img src={image} alt="hi" height="100" />
+					{/each}
+				{/await}
+			{/if}
+		</div>
 
-	<main id="locationPageFormat">
-		<h1>
-			<div class="col">
-				<div class="horizontal">
-					<section>
-						{place.name}
-					</section>
-					<section>
-						{place.stars} / 5 Stars
-					</section>
+		<main id="locationPageFormat">
+			<h1>
+				<div class="col">
+					<div class="horizontal">
+						<section>
+							{place.name}
+						</section>
+						<section>
+							{place.stars} / 5 Stars
+						</section>
+					</div>
 				</div>
-			</div>
 
-			<hr />
-		</h1>
-		<!-- <div>
+				<hr />
+			</h1>
+			<!-- <div>
 		<p>{place.location.lat}</p>
 		<p>{place.location.long}</p>
 	</div> -->
-		<div>
-			<header id="locationPageFormat">
-				{getDist(0)} miles away
-			</header>
-		</div>
-
-		<div>
-			<a href="www.google.com" id="mapLink"> Here is where the map link would be </a>
-		</div>
-
-		<div id="listHeader">
-			<div class="horizontal" id="bottom">
-				<p>Tags</p>
-				<button id="buttonEdit"> Edit </button>
+			<div>
+				<header id="locationPageFormat">
+					{getDist(0)} miles away
+				</header>
 			</div>
 
-			<div id="box">
-				<div>
-					<h1>
-						Features
-						<hr />
-					</h1>
-				</div>
-				<div class="tagsList">
-					{#each Object.entries(place.tags) as [tag, beans]}
-						<p class="unfilled_tag">
-							{getTag(tag)}
-						</p>
-					{/each}
+			<div>
+				<a href="www.google.com" id="mapLink"> Here is where the map link would be </a>
+			</div>
+
+			<div id="listHeader">
+				<div class="horizontal" id="bottom">
+					<p>Tags</p>
+					<button id="buttonEdit"> Edit </button>
 				</div>
 
-				<div>
-					<h1>
-						Accessibility
-						<hr />
-					</h1>
-				</div>
-				<div class="tagsList">
-					{#each Object.entries(place.tags) as [tag, beans]}
-						<p class="unfilled_tag">
-							{getTag(tag)}
-						</p>
-					{/each}
+				<div id="box">
+					<div>
+						<h1>
+							Features
+							<hr />
+						</h1>
+					</div>
+					<div class="tagsList">
+						{#each Object.entries(place.tags) as [tag, beans]}
+							<p class="unfilled_tag">
+								{getTag(tag)}
+							</p>
+						{/each}
+					</div>
+
+					<div>
+						<h1>
+							Accessibility
+							<hr />
+						</h1>
+					</div>
+					<div class="tagsList">
+						{#each Object.entries(place.tags) as [tag, beans]}
+							<p class="unfilled_tag">
+								{getTag(tag)}
+							</p>
+						{/each}
+					</div>
 				</div>
 			</div>
-		</div>
-	</main>
-{/await}
+		</main>
+	{/await}
+</div>
