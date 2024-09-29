@@ -4,5 +4,5 @@
 
 <div class="header">
 	<h1>Study Scout</h1>
-	<img src="/user-solid.svg" alt="profile" class="profile-icon" />
+	<img src="/feather-solid.svg" alt="profile" class="profile-icon" />
 </div>

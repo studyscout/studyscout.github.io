@@ -26,7 +26,7 @@
 			'marker'
 		)) as google.maps.MarkerLibrary;
 
-		const infoWindow = new google.maps.InfoWindow({ maxWidth: '300px' });
+		const infoWindow = new google.maps.InfoWindow({ maxWidth: '300' });
 		map = new Map(document.getElementById('map') as HTMLElement, {
 			zoom: 15,
 			center,
@@ -56,7 +56,9 @@
 			infoWindow.setContent(createContent(location));
 			infoWindow.open(selectingMarker.map, selectingMarker);
 
-			infoWindow.addListener('closeclick', () => {selectingMarker.map = null});
+			infoWindow.addListener('closeclick', () => {
+				selectingMarker.map = null;
+			});
 		}
 
 		const { locations } = await $locationsRead;

@@ -12,17 +12,18 @@ $margins: 10px
 #buttonEdit
     border: none
     color: $text-color
-    background-color: none
+    background-color: $container-background !important
     background: none
-    height: 20 px
     cursor: pointer
+    border: 1px solid $border-color
+    border-radius: $border-radius
 
 #mapLink
     color: $text-color
-    padding: 5px $padding 5px $padding
-    margin: 10px 10px 10px 0px
+    padding: $padding
     background: $container-background
     border-radius: $border-radius
+    border: 1px solid $border-color
     cursor: pointer
 
 .horizontal
@@ -48,6 +49,8 @@ $margins: 10px
     flex-direction: column
     gap: 0px
     margin: 10px 0px 0px 0px
+    border: 1px solid $border-color
+    border-radius: $border-radius
 
 #bottom
     padding: 0px
