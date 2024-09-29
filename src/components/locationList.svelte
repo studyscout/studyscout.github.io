@@ -36,7 +36,8 @@
 
 	function sharedTag(location: Location): boolean {
 		if ($filtersRead.filters.length > 0) {
-			return Object.keys(location.tags).some((tag: string) => $filtersRead.filters.includes(tag));
+			return $filtersRead.filters.every((filter) => Object.keys(location.tags).includes(filter));
+			// return Object.keys(location.tags).some((tag: string) => $filtersRead.filters.includes(tag));
 		}
 		return true;
 	}
