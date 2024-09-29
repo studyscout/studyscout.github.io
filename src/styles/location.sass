@@ -1,0 +1,38 @@
+@import ./vars
+$ourgrey: #715F58
+
+.tile-container
+    border-radius: $border-radius
+    border: 1px solid white
+    padding: $padding
+    flex-wrap: wrap
+    text-align: center
+
+.container
+    &:hover
+        font-weight: bold
+        
+    border: 1px solid white
+    border-radius: $border-radius
+    padding: $padding
+    flex-direction: row
+    display: inline-block 
+    
+
+.unfilled_tag 
+    &:hover
+        background: grey
+    border-radius: 25px
+    border: 1px solid white
+    height: 5px 
+    padding: 3px 15px 15px 15px
+    display: inline-block
+
+.tags
+  display: flex
+  margin: 0px
+  flex-wrap: wrap
+  gap: 12px
+  background: clear
+  padding: 5px 0px 5px 0px
+  margin: 0px
