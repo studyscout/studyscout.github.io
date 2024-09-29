@@ -33,7 +33,9 @@ $margins: 10px
     display: flex
     flex-direction: row
     justify-content: space-between
+    flex-wrap: wrap
     padding: $padding
+    gap: $padding
     // height: 20px
     // min-width: 20px
     img
@@ -100,6 +102,12 @@ $margins: 10px
     flex-direction: column
     img
         height: 50%
+
+.imageclass
+    max-width: 300px
+    height: auto
+    object-fit: cover
+    overflow: hidden
 
 // .name
 //     display: flex 

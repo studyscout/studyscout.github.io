@@ -2,7 +2,7 @@
 	import type { Location } from '../../interfaces/interfaces';
 	import '../../styles/vars.sass';
 	import '../../styles/location.sass';
-	// import '../../styles/locationPage.sass';
+	import '../../styles/locationPage.sass';
 	import { allTags, accessability } from '../../scripts/taglist';
 	import { getImages } from '../../scripts/photo';
 	import '../../styles/global.sass';
@@ -91,7 +91,7 @@
 					<p>Loading photos...</p>
 				{:then imgs}
 					{#each imgs as image}
-						<img src={image} alt="hi" height="100" />
+						<img src={image} alt="hi" class='imageclass'/>
 					{/each}
 				{/await}
 			{/if}
@@ -129,7 +129,7 @@
 			<div id="listHeader">
 				<div class="horizontal" id="bottom">
 					<p>Tags</p>
-					<button id="buttonEdit"> Edit </button>
+					<button id="buttonEdit"> Edit</button>
 				</div>
 
 				<div id="box">
@@ -141,7 +141,7 @@
 					</div>
 					<div class="tagsList">
 						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="unfilled_tag">
+							<p class="tag">
 								{getTag(tag)}
 							</p>
 						{/each}
@@ -154,8 +154,8 @@
 						</h1>
 					</div>
 					<div class="tagsList">
-						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="unfilled_tag">
+						{#each Object.entries(accessability) as [tag, beans]}
+							<p class="tag">
 								{getTag(tag)}
 							</p>
 						{/each}
