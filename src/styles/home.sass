@@ -6,9 +6,9 @@
 	gap: $padding
 
 .tile
-	background-color: #222222
+	background-color: $container-background
 	border-radius: $border-radius
-	border: 1px solid white
+	border: 1px solid $border-color
 	padding: $padding
 	display: flex
 	gap: $padding
@@ -18,3 +18,23 @@
 
 .tile-content
 	flex-direction: column
+
+.list-header
+	display: flex
+	justify-content: space-between
+	gap: $padding
+	margin-bottom: $padding
+
+.search
+	background-color: $background
+	border: 1px solid $border-color
+	flex-grow: 1
+	border-radius: $border-radius
+	color: white
+	padding: $padding / 2
+
+.filter
+	height: 24px
+	width: auto
+	align-self: center
+	filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)

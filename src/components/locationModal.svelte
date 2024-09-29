@@ -3,5 +3,7 @@
 	import ModalHeader from './modalHeader.svelte';
 </script>
 
-<ModalHeader />
-<LocationList />
+<div class="location-modal">
+	<ModalHeader />
+	<LocationList />
+</div>
