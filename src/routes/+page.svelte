@@ -7,7 +7,6 @@
 	import Auth from '../components/auth.svelte';
 	import Map from '../components/map.svelte';
 	import Header from '../components/header.svelte';
-
 	export let data: LocationPromise;
 	locationsStore.set(data);
 </script>
