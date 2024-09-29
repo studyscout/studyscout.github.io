@@ -4,7 +4,6 @@
 	import '../styles/home.sass';
 	import '../styles/location.sass';
 	import ListTag from './listTag.svelte';
-	import Tag from './tag.svelte';
 
 	export let location: Location;
 

@@ -6,19 +6,20 @@
 
 	// doesn't work -- change asap
 	function handleClick() {
-		const index = $editTagsStore.indexOf(tagName);
-		console.log(index);
-
-		if (index > 0) {
-			$editTagsStore.splice(index, 1);
+		if ($editTagsStore[tagName]) {
+			delete $editTagsStore[tagName];
 		} else {
-			$editTagsStore.push(tagName);
+			$editTagsStore[tagName] = true;
 		}
 
 		$editTagsStore = $editTagsStore;
 	}
 </script>
 
-<button class="tag {$editTagsStore.includes(tagName) ? 'selected' : ''}" on:click={handleClick}>
+<button
+	type="button"
+	class="tag {Object.keys($editTagsStore).includes(tagName) ? 'selected' : ''}"
+	on:click={handleClick}
+>
 	{tagName}
 </button>

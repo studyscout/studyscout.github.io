@@ -3,9 +3,9 @@
 	import '../styles/global.sass';
 	import { allTags, accessability } from '../scripts/taglist';
 	import { editTagsStore } from '../hooks/context';
-	import ListTag from './listTag.svelte';
+	import Tag from './tag.svelte';
 
-	let preset: string[] = [];
+	let preset: Record<string, boolean> = {};
 
 	editTagsStore.set(preset);
 </script>
