@@ -17,8 +17,8 @@
 	background-color: white
 
 .main-content
-	height: 100vh
-	width: 100vw
+	height: 100dvh
+	width: 100dvw
 	display: flex
 	flex-direction: column
 
@@ -35,7 +35,7 @@
 .handle
 	height: 10px
 	border-radius: $border-radius
-	width: 50vw
+	width: 50dvw
 	background-color: $border-color
 	justify-self: center
 
@@ -61,11 +61,11 @@
 .location-modal
 	position: absolute
 	z-index: 100
-	top: calc(100vh - $grip-height)
+	top: calc(100dvh - $grip-height)
 	bottom: 0
 	left: 0
 	right: 0
-	max-height: 100vh
+	max-height: 100dvh
 	background-color: $background
 	border-radius: $border-radius
 	padding: $padding
@@ -73,6 +73,8 @@
 .location-modal-content
 	height: 100%
 	overflow: scroll
+	margin-right: -$padding
+	padding-right: $padding
 
 .list-header
 	display: flex

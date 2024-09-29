@@ -23,7 +23,6 @@
 	$: filteredLocations = $filtersRead ? getFilteredList(locations) : [];
 
 	function getFilteredList(locations: Location[]) {
-		console.log(JSON.stringify($filtersRead));
 		let result: Location[] = [];
 
 		for (const location of locations) {
