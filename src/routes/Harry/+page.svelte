@@ -31,15 +31,11 @@
 
 <ul class="stars">
 
-    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star">
-
-    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star">
-    
-    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star">
-
-    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star">
-
-    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star">
+    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star" alt="is star">
+    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star" alt="is star">
+    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star" alt="is star">
+    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star" alt="is star">
+    <img src = "src/routes/Harry/pngtree-cartoon-black-bordered-stars-clipart-png-image_5568035.jpg" class="star" alt="is star">
 
 </ul>
 
