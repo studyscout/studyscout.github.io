@@ -6,65 +6,102 @@ $margins: 10px
     box-sizing: border-box
     background: $background
 
-body 
-    display: flex
-    flex-direction: column
-    margin: 0
-    padding: 0
-
 ul
     li
         list-style: none
+
 
 header, nav, main, aside, footer
     padding: $padding
     color: $text-color
 
-img
-    margin: $margins
-    border-radius: $margins
-img:hover
-    opacity: 0.3
+#locationPageFormat
+    padding: $padding
+    color: $text-color
 
-button
+// img
+//     margin: $margins
+//     border-radius: $margins
+// img:hover
+//     opacity: 0.3
+
+#buttonEdit
     border: none
     color: $text-color
     background-color: none
     background: none
     height: 20 px
+    cursor: pointer
     
-a
+#mapLink
     color: $text-color
     padding: 5px $padding 5px $padding
     margin: 10px 10px 10px 0px
     background: $container-background
     border-radius: $border-radius
+    cursor: pointer
 
 .horizontal
     display: flex
     flex-direction: row
     justify-content: space-between
     padding: $padding
-    background: clear
     // height: 20px
     // min-width: 20px
     img
         height: 100%
 
 
+#listHeader
+    display: flex
+    flex-direction: column
+    gap: 0px
+    margin: 10px 0px 0px 0px
+    
+
 #bottom 
     padding: 0px
     margin: 0px 10px 0px 10px
-    height: 50px
+    min-height: 30px
+    height: 20px
+    background: none
+    p
+        padding: 5px 0px 0px 0px
+        margin: 0
+        font-size: large
+        background: none
 
 .tagsList
     display: flex
     flex-direction: row
     justify-content: flex-start
     flex-wrap: wrap
+    gap: $padding
     margin: 0 px 10 px 10 px 10px
+    padding: 0px $padding 0px $padding
     background: $container-background
     border-radius: $border-radius
+    p
+        // margin: $padding
+        padding: 3px 15px 20px 15px
+
+    
+#box
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    gap: 0px
+    margin: 0 px 10 px 10 px 10px
+    padding: 0px $padding 0px $padding
+    background: $container-background
+    border-radius: $border-radius
+    h1
+        text-align: center
+        background: none
+        margin: $padding 0px 0px 0px
+    div
+        background: none
+
 
 .rightHandSide
     display: flex

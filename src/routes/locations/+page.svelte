@@ -69,7 +69,7 @@
 	</div>
 	</header> -->
 
-	<main>
+	<main id = "locationPageFormat">
 	<h1>
 		<div class = "col">
 			<div class = "horizontal">
@@ -77,7 +77,7 @@
 					{place.name}
 				</section>
 				<section>
-					{place.stars} / 5
+					{place.stars} / 5 Stars
 				</section>
 			</div>
 		</div>
@@ -89,34 +89,59 @@
 		<p>{place.location.long}</p>
 	</div> -->
 	<div>
-		<header>
+		<header id = "locationPageFormat">
 			{getDist(0)} miles away
 		</header>
 	</div>
 
 	<div>
-		<a href= "www.google.com">
+		<a href= "www.google.com" id = "mapLink">
 			Here is where the map link would be
 		</a>
 	</div>
 
 	
-	<div class = "horizontal" id = "bottom">
-		<p>	
-			Tags
-		</p>
-		<button>
-		    Edit
-		</button>
-	</div>
-
-	<div class = "tagsList">
-		
-		{#each Object.entries(place.tags) as [tag, beans]}
-			<p class="unfilled_tag">
-				{getTag(tag)}
+	<div id = "listHeader">
+		<div class = "horizontal" id = "bottom">
+			<p>	
+				Tags
 			</p>
-		{/each}
+			<button id = "buttonEdit">
+				Edit
+			</button>
+		</div>
+
+		<div id = "box">
+			<div>
+				<h1>
+					Features
+					<hr>
+				</h1>
+			</div>
+			<div class = "tagsList">
+
+				{#each Object.entries(place.tags) as [tag, beans]}
+					<p class="unfilled_tag">
+						{getTag(tag)}
+					</p>
+				{/each}
+			</div>
+		
+			<div>
+				<h1>
+					Accessibility
+					<hr>
+				</h1>
+			</div>
+			<div class = "tagsList">
+
+				{#each Object.entries(place.tags) as [tag, beans]}
+					<p class="unfilled_tag">
+						{getTag(tag)}
+					</p>
+				{/each}
+			</div>
+		</div>
 
 	</div>
 	</main>
