@@ -33,12 +33,10 @@
 		for (const location of locations) {
 			const position = locationToMapPosition(location);
 
-			const marker = new google.maps.Marker({
+			const marker = new google.maps.marker.AdvancedMarkerElement({
 				map,
 				position,
-				title: location.name,
-				label: location.name,
-				optimize: false
+				title: location.name
 			});
 
 			marker.addListener('click', () => {
@@ -50,11 +48,13 @@
 	}
 </script>
 
-<div id="map"></div>
+<div style="flex-grow: 1">
+	<div id="map"></div>
+</div>
 
 <style>
 	#map {
-		height: 400px; /* The height is 400 pixels */
-		width: 100%; /* The width is the width of the web page */
+		height: 100%;
+		width: 100%;
 	}
 </style>
