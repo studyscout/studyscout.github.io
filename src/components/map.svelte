@@ -79,9 +79,9 @@
 	function getContent(location: Location) {
 		return `
 		<div style="color: black">
-			<a style="color: inherit; font-size: 30px" href="/locations?id=${location.id}">${location.name}</a>
-			<p style="color: inherit">${formatTagList(location.tags)}</p>
-			<p style="color: inherit">${location.stars}/5 starts</p>
+			<a style="font-size: 30px" href='/locations?id=${location.id}'>${location.name}</a>
+			<p style="color: black">${formatTagList(location.tags)}</p>
+			<p style="color: black">${location.stars}/5 starts</p>
 		</div>
 		`;
 	}
@@ -89,7 +89,7 @@
 	function createContent(location: any) {
 		console.log(JSON.stringify(location));
 		return `
-			<h2 style="color:black">Is this location ok?</h2>
+			<h2 style="color: black">Is this location ok?</h2>
 			<a href="/locations/create?lat=${location.lat()}&lng=${location.lng()}">Create a new study location</a>
 		`;
 	}
@@ -99,8 +99,8 @@
 	<div id="map"></div>
 </div>
 
-<style>
+<!-- <style>
 	div {
 		color: black;
 	}
-</style>
+</style> -->

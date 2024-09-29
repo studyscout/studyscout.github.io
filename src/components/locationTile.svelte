@@ -3,6 +3,8 @@
 	import type { Location } from '../interfaces/interfaces';
 	import '../styles/home.sass';
 	import '../styles/location.sass';
+	import ListTag from './listTag.svelte';
+	import Tag from './tag.svelte';
 
 	export let location: Location;
 
@@ -29,13 +31,11 @@
 	<div class="tile-content">
 		<h3>{location.name}</h3>
 		<div>
-			<ul class="tags">
+			<div class="tags" style="margin-left: -12px; margin-right: -12px">
 				{#each Object.entries(location.tags) as [tag, beans]}
-					<li class="unfilled_tag">
-						{getTag(tag)}
-					</li>
+					<ListTag tagName={getTag(tag)} />
 				{/each}
-			</ul>
+			</div>
 		</div>
 		<p>{location.stars} / 5</p>
 	</div>

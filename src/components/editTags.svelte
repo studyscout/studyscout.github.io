@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../styles/location.sass';
 	import '../styles/global.sass';
-	import { allTags, accessabiliy } from '../scripts/taglist';
-	import Tag from '../components/tag.svelte';
+	import { allTags, accessability } from '../scripts/taglist';
 	import { editTagsStore } from '../hooks/context';
+	import ListTag from './listTag.svelte';
 
 	let preset: string[] = [];
 
@@ -16,7 +16,7 @@
 	</h1>
 
 	<div class="tags">
-		{#each allTags as tag}
+		{#each Object.keys(allTags) as tag}
 			<Tag tagName={tag} />
 		{/each}
 	</div>
@@ -28,9 +28,9 @@
 	<h1>
 		<p>Accessability&#129469</p>
 	</h1>
-	<ul class="tags">
-		{#each accessabiliy as tag}
+	<div class="tags">
+		{#each Object.keys(accessability) as tag}
 			<Tag tagName={tag} />
 		{/each}
-	</ul>
+	</div>
 </div>
