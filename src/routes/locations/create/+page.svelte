@@ -4,8 +4,22 @@
 	import '../../../styles/create.sass';
 	import EditTags from '../../../components/editTags.svelte';
 	import { createLocation } from '../../../scripts/firestore';
+	import { onMount } from 'svelte';
+	import type { PageLoad } from './$types';
 
-	let data: { lat: number; lng: number };
+	export const load: PageLoad = async ({ url }) => {
+		const a = url.searchParams;
+		const lat = a.get('lat');
+		const lng = a.get('lng');
+
+		if (lat == null || lng == null) {
+			throw new Error('Lat or Lng is Null');
+		}
+
+		inputs.location.lat = parseInt(lat);
+		inputs.location.long = parseInt(lng);
+	};
+
 	let inputs: Location = {
 		id: '',
 		name: '',
@@ -39,5 +53,5 @@
 	<p>Latitude: {inputs.location.lat}, Longitude: {inputs.location.long}</p>
 	<br />
 
-	<button on:click={submitForm}>Create</button>
+	<button class="submit" on:click={submitForm}>Create</button>
 </div>

@@ -1,5 +1,5 @@
 export const allTags: Record<string, boolean> = {
-	'Quiet': true,
+	Quiet: true,
 	'Hard to Find a Spot': true,
 	'Group Study Areas': true,
 	'Busy Times': true,
@@ -12,13 +12,12 @@ export const allTags: Record<string, boolean> = {
 	'Outdoor Study Areas': true,
 	'Comfortable Seating': true,
 	'Study Atmosphere': true,
-	'Libraries': true,
-	'Bookstores': true,
-	'Cafe': true,
-
+	Libraries: true,
+	Bookstores: true,
+	Cafe: true
 };
 
-export const accessabiliy: string[] = ['Wheel Chair Access', 'Deaf Friendly', 'Blind Friendly'];
+export const accessability: string[] = ['Wheel Chair Access', 'Deaf Friendly', 'Blind Friendly'];
 
 export function formatTagList(tagObj: Record<string, boolean>): string {
 	const tags: string[] = Object.keys(tagObj);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../styles/location.sass';
 	import '../styles/global.sass';
-	import { allTags, accessabiliy } from '../scripts/taglist';
+	import { allTags, accessability } from '../scripts/taglist';
 	import Tag from '../components/tag.svelte';
 	import { editTagsStore } from '../hooks/context';
 
@@ -16,7 +16,7 @@
 	</h1>
 
 	<div class="tags">
-		{#each allTags as tag}
+		{#each Object.keys(allTags) as tag}
 			<Tag tagName={tag} />
 		{/each}
 	</div>
@@ -29,7 +29,7 @@
 		<p>Accessability&#129469</p>
 	</h1>
 	<ul class="tags">
-		{#each accessabiliy as tag}
+		{#each accessability as tag}
 			<Tag tagName={tag} />
 		{/each}
 	</ul>
