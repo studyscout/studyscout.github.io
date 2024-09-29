@@ -1,5 +1,24 @@
-@import ./vars
-$ourgrey: #715F58
+@import "./vars"
+
+.tag
+    background-color: $background
+    border-radius: $border-radius
+    border: 1px solid $border-color
+    padding: calc($padding / 2)
+    color: white
+
+    &:hover
+        cursor: pointer
+
+.selected
+    background-color: $border-color
+
+.tags
+    display: flex
+    margin: 0px
+    flex-wrap: wrap
+    gap: $padding
+    padding: $padding
 
 .tile-container
     border-radius: $border-radius
@@ -7,32 +26,4 @@ $ourgrey: #715F58
     padding: $padding
     flex-wrap: wrap
     text-align: center
-
-.container
-    &:hover
-        font-weight: bold
-        
-    border: 1px solid white
-    border-radius: $border-radius
-    padding: $padding
-    flex-direction: row
-    display: inline-block 
-    
-
-.unfilled_tag 
-    &:hover
-        background: grey
-    border-radius: 25px
-    border: 1px solid white
-    height: 5px 
-    padding: 3px 15px 15px 15px
-    display: inline-block
-
-.tags
-  display: flex
-  margin: 0px
-  flex-wrap: wrap
-  gap: 12px
-  background: clear
-  padding: 5px 0px 5px 0px
-  margin: 0px
+    background-color: $container-background

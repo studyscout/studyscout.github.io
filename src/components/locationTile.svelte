@@ -2,7 +2,9 @@
 	import { goto, replaceState } from '$app/navigation';
 	import type { Location } from '../interfaces/interfaces';
 	import '../styles/home.sass';
-	import '../styles/tags.sass';
+	import '../styles/location.sass';
+	import ListTag from './listTag.svelte';
+	import Tag from './tag.svelte';
 
 	export let location: Location;
 
@@ -11,15 +13,14 @@
 	}
 
 	function getTag(tag: string) {
-		const temp = tag.split("_");
-		
-		let finalString = "";
+		const temp = tag.split('_');
+
+		let finalString = '';
 		for (let str of temp) {
-  			finalString += str.charAt(0).toUpperCase() + str.slice(1) + " ";	
+			finalString += str.charAt(0).toUpperCase() + str.slice(1) + ' ';
 		}
 
-		return finalString.slice(0, finalString.length-1);
-		
+		return finalString.slice(0, finalString.length - 1);
 	}
 </script>
 
@@ -29,16 +30,12 @@
 	<img src="https://placecats.com/neo/100/100" height="100" width="100" alt="img" />
 	<div class="tile-content">
 		<h3>{location.name}</h3>
-	    <div>
-			<ul class="tags">
-
+		<div>
+			<div class="tags" style="margin-left: -12px; margin-right: -12px">
 				{#each Object.entries(location.tags) as [tag, beans]}
-					
-					<li class="unfilled_tag">
-						{getTag(tag)}
-					</li>
+					<ListTag tagName={getTag(tag)} />
 				{/each}
-			</ul>
+			</div>
 		</div>
 		<p>{location.stars} / 5</p>
 	</div>

@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { Location } from '../../interfaces/interfaces';
-	import "../../styles/locationPage.sass"
-	import "../../styles/vars.sass"
-	import "../../styles/tags.sass"
+	import '../../styles/vars.sass';
+	import '../../styles/location.sass';
 	export let data: Location;
-
 
 	import useLocation from '../../hooks/useLocation';
 	import type { Coordinates } from '../../interfaces/interfaces';
@@ -18,27 +16,25 @@
 	let coordinates: Coordinates | undefined;
 
 	function getTag(tag: string) {
-		const temp = tag.split("_");
-		
-		let finalString = "";
+		const temp = tag.split('_');
+
+		let finalString = '';
 		for (let str of temp) {
-  			finalString += str.charAt(0).toUpperCase() + str.slice(1) + " ";	
+			finalString += str.charAt(0).toUpperCase() + str.slice(1) + ' ';
 		}
 
-		return finalString.slice(0, finalString.length-1);
-		
+		return finalString.slice(0, finalString.length - 1);
 	}
 
-	function getDist(currCoord: number){
+	function getDist(currCoord: number) {
 		// eventually do something to get distance from given coord
 		return 0;
 	}
 
-	function getGoogLink(currCoord: number){
+	function getGoogLink(currCoord: number) {
 		//eventually get a link to the coordinates through google
-		return "www.google.com";
+		return 'www.google.com';
 	}
-
 </script>
 
 <!-- media stuff (stretch)
@@ -58,7 +54,6 @@
 {#await data}
 	<p>Loading...</p>
 {:then place}
-
 	<!-- <header>
 	<div class = "horizontal">
 		<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
@@ -82,9 +77,9 @@
 			</div>
 		</div>
 
-		<hr>
-	</h1>
-	<!-- <div>
+			<hr />
+		</h1>
+		<!-- <div>
 		<p>{place.location.lat}</p>
 		<p>{place.location.long}</p>
 	</div> -->
