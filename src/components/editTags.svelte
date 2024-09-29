@@ -5,14 +5,14 @@
 	import { editTagsStore } from '../hooks/context';
 	import Tag from './tag.svelte';
 
-	let preset: Record<string, boolean> = {};
+	// let preset: Record<string, boolean> = {};
 
-	editTagsStore.set(preset);
+	// editTagsStore.set(preset);
 </script>
 
 <div class="tile-container">
 	<h1 style="flex-wrap: nowrap">
-		<p>Features&#129504</p>
+		<p>Features &#129504</p>
 	</h1>
 
 	<div class="tags">
@@ -26,7 +26,7 @@
 
 <div class="tile-container">
 	<h1>
-		<p>Accessability&#129469</p>
+		<p>Accessibility &#129469</p>
 	</h1>
 	<div class="tags">
 		{#each Object.keys(accessability) as tag}

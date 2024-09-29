@@ -18,9 +18,10 @@
 		for (let str of temp) {
 			finalString += str.charAt(0).toUpperCase() + str.slice(1) + ' ';
 		}
-
 		return finalString.slice(0, finalString.length - 1);
 	}
+
+	let headThree = Object.entries(location.tags).slice(0, 3);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
