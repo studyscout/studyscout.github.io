@@ -17,6 +17,23 @@
 	display: flex
 	flex-direction: column
 
+.grip
+	height: 50px
+	display: flex
+	justify-content: center
+	align-content: center
+	align-items: center
+	margin-top: -$padding
+	cursor: grip
+	transition: transform 0.3s ease
+
+.handle
+	height: 10px
+	border-radius: $border-radius
+	width: 50vw
+	background-color: $border-color
+	justify-self: center
+
 .tile-list
 	display: flex
 	flex-direction: column
@@ -38,6 +55,15 @@
 
 .location-modal
 	position: absolute
+	z-index: 100
+	top: calc(100vh - $grip-height)
+	bottom: 0
+	left: 0
+	right: 0
+	height: 100vh
+	background-color: $background
+	border-radius: $border-radius
+	padding: $padding
 
 .list-header
 	display: flex

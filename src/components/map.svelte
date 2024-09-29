@@ -6,11 +6,11 @@
 	import { onMount } from 'svelte';
 	import loadMap from '../hooks/map';
 
-	useLocation(initMap);
+	// useLocation(initMap);
 
-	onMount(() => {
-		loadMap();
-	});
+	// onMount(() => {
+	// 	loadMap();
+	// });
 
 	let map;
 	async function initMap(coordinates: Coordinates): Promise<void> {
@@ -42,8 +42,7 @@
 			marker.addListener('click', () => {
 				infoWindow.close();
 				infoWindow.setContent(
-					'<h1>' + marker.getTitle() + '</h1>' +
-					'<p>' + location.stars + '/5</p><ul class="tags">'
+					'<h1>' + marker.getTitle() + '</h1>' + '<p>' + location.stars + '/5</p><ul class="tags">'
 				);
 				infoWindow.open(marker.getMap(), marker);
 			});
@@ -59,5 +58,6 @@
 	#map {
 		height: 100%;
 		width: 100%;
+		background-color: white;
 	}
 </style>
