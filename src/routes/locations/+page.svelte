@@ -2,6 +2,9 @@
 	import type { Location } from '../../interfaces/interfaces';
 	import '../../styles/vars.sass';
 	import '../../styles/location.sass';
+	import '../../styles/locationPage.sass';
+	import { allTags, accessability } from '../../scripts/taglist';
+
 	export let data: Location;
 
 	import useLocation from '../../hooks/useLocation';
@@ -37,32 +40,47 @@
 	}
 </script>
 
-<!-- media stuff (stretch)
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-	body {
-		background-color: yellow;
+<!-- <style>
+	h1 {
+		background-color: yellow;	
 	}
+/* 
+	#rhs {
+		flex-direction: row;
+		flex: 1;
+	} */
+	/* .rightHandSide {
+    	display: flex;
+    	flex-direction: column;
+		flex: 1;
+	} */
+	
 	@media only screen and (max-width: 600px){
-		body{
+
+
+		h1{
 			background-color: blue;
 		}
+
+		/* .rightHandSide {
+			display: flex;
+			flex-direction: row;
+			flex: 2;
+		} */
 	}
+	
 </style> -->
 
 {#await data}
 	<p>Loading...</p>
 {:then place}
-	<!-- <header>
-	<div class = "horizontal">
-		<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-		<div class = "rightHandSide">
-			<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-			<img src = "src/routes/Harry/images.jpeg" alt = "corndog">
-		</div>
+	<div class="horizontal" id="firstImages">
+		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
+		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
+		<img src="src/routes/Harry/images.jpeg" alt="corndog" />
 	</div>
-	</header> -->
 
 	<main id="locationPageFormat">
 		<h1>
