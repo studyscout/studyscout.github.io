@@ -5,3 +5,5 @@ export const locationsStore = writable<LocationPromise>(undefined);
 export const locationsRead = readonly<LocationPromise>(locationsStore);
 export const filtersStore = writable<ListFilters>(undefined);
 export const filtersRead = readonly<ListFilters>(filtersStore);
+
+export const editTagsStore = writable<string[]>(undefined);

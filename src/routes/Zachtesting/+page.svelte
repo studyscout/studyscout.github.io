@@ -6,6 +6,8 @@
 	import { goto } from '$app/navigation';
 	import { reload } from 'firebase/auth';
 	import { onMount } from 'svelte';
+	import Tag from '../../components/tag.svelte';
+	import { editTagsStore } from '../../hooks/context';
 	let clicked = false;
 
 	function handleclick() {
@@ -15,7 +17,7 @@
 		clicked = !clicked;
 	}
 
-  
+	editTagsStore.set(["Quiet"])
 
 	/*  console.log("Basic: " + allTags);
   $: console.log("Reactive: " + allTags);
@@ -40,13 +42,11 @@
 		<p>Feature&#129504</p>
 	</h1>
 
-	<ul class="tags">
+	<div class="tags">
 		{#each allTags as tag}
-			<div class="unfilled_tag">
-				{tag}
-			</div>
+			<Tag tagName={tag} />
 		{/each}
-	</ul>
+	</div>
 </div>
 
 <br />
@@ -56,10 +56,8 @@
 		<p>Accesbilities&#129469</p>
 	</h1>
 	<ul class="tags">
-		{#each accesbilities as tag, index}
-			<div class="unfilled_tag" on:click={isclicked(index)}>
-				{tag}
-			</div>
+		{#each accesbilities as tag}
+			<Tag tagName={tag}/>
 		{/each}
 	</ul>
 </div>
