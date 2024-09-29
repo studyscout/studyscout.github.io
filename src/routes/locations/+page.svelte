@@ -42,11 +42,6 @@
 		return 0;
 	}
 
-	function getGoogLink(currCoord: number) {
-		//eventually get a link to the coordinates through google
-		return 'www.google.com';
-	}
-
 	onMount(async () => {
 		images = await getImages(data.id);
 		editTagsStore.set(data.tags);
@@ -60,11 +55,12 @@
 		tagsVisible = !tagsVisible;
 	}
 
-	// function returnGoogleMapQuery(lat: number, long: number){
-	// 	if(lat == undefined || long == undefined)
-	// 		return undefined;
-	// 	return "https://www.google.com/maps/search/?api=1&query=" + data.location.lat + "%2C" + data.location.long;
-	// }
+	function returnGoogleMapQuery(lat: number, long: number){
+		if(lat == undefined || long == undefined)
+			return undefined;
+		return "https://www.google.com/maps/search/?api=1&query=" + data.location.lat + "%2C" + data.location.long;
+	}
+
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -112,9 +108,9 @@
 				</header>
 			</div>
 
-			<!-- <div>
-				<a href={returnGoogleMapQuery(place.location.lat, place.location.long)} id="mapLink"> Here is where the map link would be </a>
-			</div> -->
+			<div>
+				<a href={returnGoogleMapQuery(place.location.lat, place.location.long)} id="mapLink"> Google Maps </a>
+			</div>
 
 			<div id="listHeader">
 				<div class="horizontal" id="bottom">
