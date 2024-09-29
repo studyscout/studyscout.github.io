@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { goto, replaceState } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import type { Location } from '../interfaces/interfaces';
 	import '../styles/home.sass';
 	import '../styles/location.sass';
 	import ListTag from './listTag.svelte';
+	import { getFirstImage } from '../scripts/photo';
 
 	export let location: Location;
+	let image: string;
 
 	function navigate() {
 		goto(`/locations?id=${location.id}`);
@@ -22,12 +25,22 @@
 	}
 
 	let headThree = Object.entries(location.tags).slice(0, 3);
+
+	onMount(async () => {
+		image = await getFirstImage(location.id);
+	});
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="tile" on:click={navigate}>
-	<img src="https://placecats.com/neo/100/100" height="100" width="100" alt="img" />
+	{#if image}
+		<img src={image} height="100" width="100" alt="img" />
+	{:else}
+		<div
+			style="background-color: gray; height: 100px !important; width: 100px !important; min-width: 100px !important; border-radius: 12px"
+		/>
+	{/if}
 	<div class="tile-content">
 		<h3>{location.name}</h3>
 		<div>

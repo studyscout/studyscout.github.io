@@ -73,7 +73,7 @@
 					<p>Loading photos...</p>
 				{:then imgs}
 					{#each imgs as image}
-						<img src={image} alt="hi" class='imageclass'/>
+						<img src={image} alt="hi" class="imageclass" />
 					{/each}
 				{/await}
 			{/if}
@@ -127,7 +127,7 @@
 							</h1>
 						</div>
 						<div class="tagsList">
-							{#each Object.entries($editTagsStore) as [tag, beans]}
+							{#each Object.entries(place.tags) as [tag, beans]}
 								{#if Object.keys(allTags).includes(tag)}
 									<p class="tag">
 										{getTag(tag)}
