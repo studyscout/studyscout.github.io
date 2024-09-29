@@ -17,14 +17,14 @@
 </script>
 
 <div class="tile-list">
-	<!-- {#each places as place, index}
-		<LocationTile location={place} />
-	{/each} -->
 	{#await data}
 		<p>Loading...</p>
 	{:then { locations }}
 		{#each locations as location}
 			<LocationTile {location} />
 		{/each}
+	{:catch error}
+		{console.error(error)}
+		<p>Something went wrong...</p>
 	{/await}
 </div>
