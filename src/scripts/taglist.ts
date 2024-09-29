@@ -17,7 +17,11 @@ export const allTags: Record<string, boolean> = {
 	Cafe: true
 };
 
-export const accessability: string[] = ['Wheel Chair Access', 'Deaf Friendly', 'Blind Friendly'];
+export const accessability: Record<string, boolean> = {
+	'Wheel Chair Access': true,
+	'Deaf Friendly': true,
+	'Blind Friendly': true
+};
 
 export function formatTagList(tagObj: Record<string, boolean>): string {
 	const tags: string[] = Object.keys(tagObj);

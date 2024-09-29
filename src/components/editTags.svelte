@@ -29,7 +29,7 @@
 		<p>Accessability&#129469</p>
 	</h1>
 	<ul class="tags">
-		{#each accessability as tag}
+		{#each Object.keys(accessability) as tag}
 			<Tag tagName={tag} />
 		{/each}
 	</ul>
