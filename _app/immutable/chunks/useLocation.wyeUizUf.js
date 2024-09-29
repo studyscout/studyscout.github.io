@@ -1,0 +1,1 @@
+import{o as n}from"./scheduler.CXGIGFVi.js";function e(o){navigator.geolocation?navigator.geolocation.getCurrentPosition(t=>i(t,o)):console.warn("Geolocation Not Enabled")}function i(o,t){t([o.coords.latitude,o.coords.longitude])}function r(o){n(()=>{e(o)})}export{r as u};
