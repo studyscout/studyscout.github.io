@@ -22,7 +22,6 @@
 	}
 
 	let headThree = Object.entries(location.tags).slice(0, 3);
-
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -33,7 +32,7 @@
 		<h3>{location.name}</h3>
 		<div>
 			<div class="tags" style="margin-left: -12px; margin-right: -12px">
-				{#each headThree as [tag, beans]}
+				{#each Object.entries(location.tags) as [tag, beans]}
 					<ListTag tagName={getTag(tag)} />
 				{/each}
 			</div>

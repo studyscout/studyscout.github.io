@@ -9,10 +9,14 @@
 
 	export let data: Location;
 	let images: string[] = [];
+	let tagsVisible = false;
 
 	import useLocation from '../../hooks/useLocation';
 	import type { Coordinates } from '../../interfaces/interfaces';
 	import { onMount } from 'svelte';
+	import EditTags from '../../components/editTags.svelte';
+	import { editTagsStore } from '../../hooks/context';
+	import { createLocation } from '../../scripts/firestore';
 
 	useLocation(setLocation);
 
@@ -45,43 +49,21 @@
 
 	onMount(async () => {
 		images = await getImages(data.id);
+		editTagsStore.set(data.tags);
 	});
+
+	function changeVisibility() {
+		if (tagsVisible) {
+			createLocation(data);
+		}
+
+		tagsVisible = !tagsVisible;
+	}
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- <style>
-	h1 {
-		background-color: yellow;	
-	}
-/* 
-	#rhs {
-		flex-direction: row;
-		flex: 1;
-	} */
-	/* .rightHandSide {
-    	display: flex;
-    	flex-direction: column;
-		flex: 1;
-	} */
-	
-	@media only screen and (max-width: 600px){
-
-
-		h1{
-			background-color: blue;
-		}
-
-		/* .rightHandSide {
-			display: flex;
-			flex-direction: row;
-			flex: 2;
-		} */
-	}
-	
-</style> -->
-
-<div style="height: 100dvh; overflow: scroll">
+<div style="height: 100dvh; overflow-y: scroll; overflow-x: hidden">
 	{#await data}
 		<p>Loading...</p>
 	{:then place}
@@ -129,38 +111,48 @@
 			<div id="listHeader">
 				<div class="horizontal" id="bottom">
 					<p>Tags</p>
-					<button id="buttonEdit"> Edit </button>
+					<button id="buttonEdit" on:click={changeVisibility}>
+						{tagsVisible ? 'Done' : 'Edit'}
+					</button>
 				</div>
 
-				<div id="box">
-					<div>
-						<h1>
-							Features
-							<hr />
-						</h1>
-					</div>
-					<div class="tagsList">
-						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="tag">
-								{getTag(tag)}
-							</p>
-						{/each}
-					</div>
+				{#if tagsVisible}
+					<EditTags />
+				{:else}
+					<div id="box">
+						<div>
+							<h1>
+								Features
+								<hr />
+							</h1>
+						</div>
+						<div class="tagsList">
+							{#each Object.entries($editTagsStore) as [tag, beans]}
+								{#if Object.keys(allTags).includes(tag)}
+									<p class="tag">
+										{getTag(tag)}
+									</p>
+								{/if}
+							{/each}
+						</div>
 
-					<div>
-						<h1>
-							Accessibility
-							<hr />
-						</h1>
+						<div>
+							<h1>
+								Accessibility
+								<hr />
+							</h1>
+						</div>
+						<div class="tagsList">
+							{#each Object.entries(place.tags) as [tag, beans]}
+								{#if Object.keys(accessability).includes(tag)}
+									<p class="tag">
+										{getTag(tag)}
+									</p>
+								{/if}
+							{/each}
+						</div>
 					</div>
-					<div class="tagsList">
-						{#each Object.entries(place.tags) as [tag, beans]}
-							<p class="tag">
-								{getTag(tag)}
-							</p>
-						{/each}
-					</div>
-				</div>
+				{/if}
 			</div>
 		</main>
 	{/await}

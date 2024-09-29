@@ -5,9 +5,9 @@
 	import { editTagsStore } from '../hooks/context';
 	import Tag from './tag.svelte';
 
-	let preset: Record<string, boolean> = {};
+	// let preset: Record<string, boolean> = {};
 
-	editTagsStore.set(preset);
+	// editTagsStore.set(preset);
 </script>
 
 <div class="tile-container">
